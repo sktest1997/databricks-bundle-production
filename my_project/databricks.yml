@@ -1,0 +1,40 @@
+# Declarative Automation Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
+bundle:
+  name: my_project
+
+variables:
+  env_name:
+    description: "Environment label"
+    default: dev
+  catalog_name:
+    description: "Catalog name per environment"
+    default: databricks_bundle_development
+
+include:
+  - resources/*.yml
+  - resources/catalog/*.yml
+  - resources/job/*.yml
+  - resources/notebook/*.yml
+  - resources/pipeline/*.yml
+  - resources/schema/*.yml
+  - resources/table/*.yml
+  - src/env/*.yml
+  - src/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405617774990580.0.azuredatabricks.net
+    variables:
+      env_name: dev
+      catalog_name: databricks_bundle_development
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-7405613773292434.14.azuredatabricks.net
+    variables:
+      env_name: prod
+      catalog_name: databricks_bundle_production

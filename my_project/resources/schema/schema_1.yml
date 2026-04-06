@@ -1,0 +1,6 @@
+resources:
+  schemas:
+    test_1_schema:
+      catalog_name: ${var.catalog_name}
+      name: test_1_${var.env_name}
+      comment: "Schema for test_1 — ${var.env_name}"
