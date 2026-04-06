@@ -1,4 +1,4 @@
-#SCHMA CREATION
+#SCHEMA CREATION
 resources:
   schemas:
     test_1_schema:
